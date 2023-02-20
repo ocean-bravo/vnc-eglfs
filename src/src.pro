@@ -1,16 +1,15 @@
+QT += gui gui-private network
+
 TEMPLATE = lib
-TARGET   = qvnceglfs
+
+TARGET = $$qtLibraryTarget(vncgl)
 
 DEFINES += VNC_MAKEDLL
 
-QT += gui gui-private network
-
 CONFIG += hide_symbols
-CONFIG += silent
+#CONFIG += silent
 CONFIG += no_private_qt_headers_warning
 
-CONFIG += strict_c++
-CONFIG += c++11
 CONFIG += warn_on
 CONFIG += pedantic
 
@@ -37,11 +36,7 @@ pedantic {
     }
 }
 
-MOC_DIR=moc
-OBJECTS_DIR=obj
-
-TARGET = $$qtLibraryTarget(vncgl)
-DESTDIR = lib
+DESTDIR = $${BUILD_ROOT}/lib
 
 HEADERS += \
     RfbSocket.h \
@@ -60,6 +55,9 @@ SOURCES += \
     VncServer.cpp \
     VncClient.cpp \
     VncNamespace.cpp \
+
+OTHER_FILES +=
+    vncgl.pri \
 
 INSTALL_ROOT=/usr/local/vnceglfs
 # INSTALL_ROOT=$$[QT_INSTALL_PREFIX]

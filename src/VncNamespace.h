@@ -2,9 +2,7 @@
  * VncEGLFS - Copyright (C) 2022 Uwe Rathmann
  * This file may be used under the terms of the 3-clause BSD License
  *****************************************************************************/
-
-#ifndef VNC_NAMESPACE
-#define VNC_NAMESPACE
+#pragma once
 
 #include <qglobal.h>
 #include <qlist.h>
@@ -123,5 +121,3 @@ namespace Vnc
      */
     VNC_EXPORT QList< QWindow* > windows();
 }
-
-#endif

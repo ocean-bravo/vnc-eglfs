@@ -1,29 +1,20 @@
+QT += gui gui-private
+
 TEMPLATE = lib
 
+TARGET = $$qtLibraryTarget(vncproxy)
+
 CONFIG += plugin
-CONFIG += silent
 CONFIG += warn_on
 
 CONFIG += hide_symbols
 CONFIG += no_private_qt_headers_warning
 
-CONFIG += strict_c++
-CONFIG += c++11
-
-QT += gui gui-private
-
-MOC_DIR=moc
-OBJECTS_DIR=obj
-
-TARGET = $$qtLibraryTarget(vncproxy)
 DESTDIR = plugins/platforms
 
-PROJECT_ROOT = $$clean_path( $$PWD/../src )
+#PROJECT_ROOT = $$clean_path( $$PWD/../src )
 
-INCLUDEPATH *= $${PROJECT_ROOT}
-DEPENDPATH *= $${PROJECT_ROOT}
-
-LIBS *= -L$${PROJECT_ROOT}/lib -lvncgl
+include($${PROJECT_ROOT}/src/vncgl.pri)
 
 SOURCES += \
     VncProxyPlugin.cpp
