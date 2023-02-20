@@ -16,6 +16,9 @@ DESTDIR = plugins/platforms
 
 include($${PROJECT_ROOT}/src/vncgl.pri)
 
+
+message (project root: $${PROJECT_ROOT})
+
 HEADERS += \
     VncProxyPlugin.h
 
