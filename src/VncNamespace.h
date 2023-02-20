@@ -4,8 +4,8 @@
  *****************************************************************************/
 #pragma once
 
-#include <qglobal.h>
-#include <qlist.h>
+#include <QtGlobal>
+#include <QList>
 
 class QWindow;
 
