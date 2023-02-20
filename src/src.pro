@@ -6,7 +6,9 @@ TARGET = $$qtLibraryTarget(vncgl)
 
 DEFINES += VNC_MAKEDLL
 
-CONFIG += hide_symbols
+CONFIG += shared
+
+#CONFIG += hide_symbols
 #CONFIG += silent
 CONFIG += no_private_qt_headers_warning
 
