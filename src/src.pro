@@ -46,6 +46,8 @@ HEADERS += \
     VncServer.h \
     VncClient.h \
     VncNamespace.h \
+    client_thread.h \
+    tcp_server.h
 
 SOURCES += \
     RfbSocket.cpp \
@@ -55,6 +57,8 @@ SOURCES += \
     VncServer.cpp \
     VncClient.cpp \
     VncNamespace.cpp \
+    client_thread.cpp \
+    tcp_server.cpp
 
 OTHER_FILES +=
     vncgl.pri \

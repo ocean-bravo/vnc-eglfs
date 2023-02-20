@@ -587,5 +587,5 @@ void VncClient::updateCursor()
     }
 }
 
-#include "VncClient.moc"
-#include "moc_VncClient.cpp"
+//#include "VncClient.moc"
+//#include "moc_VncClient.cpp"

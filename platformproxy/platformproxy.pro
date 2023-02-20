@@ -16,8 +16,8 @@ DESTDIR = plugins/platforms
 
 include($${PROJECT_ROOT}/src/vncgl.pri)
 
-SOURCES += \
-    VncProxyPlugin.cpp
+HEADERS += \
+    VncProxyPlugin.h \
 
 OTHER_FILES += metadata.json
 
@@ -26,3 +26,6 @@ INSTALL_ROOT=/usr/local/vnceglfs
 
 target.path = $${INSTALL_ROOT}/plugins/platforms
 INSTALLS += target
+
+SOURCES += \
+    VncProxyPlugin.cpp
