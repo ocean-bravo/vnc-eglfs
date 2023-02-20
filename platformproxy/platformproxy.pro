@@ -17,7 +17,7 @@ DESTDIR = plugins/platforms
 include($${PROJECT_ROOT}/src/vncgl.pri)
 
 HEADERS += \
-    VncProxyPlugin.h \
+    VncProxyPlugin.h
 
 OTHER_FILES += metadata.json
 
