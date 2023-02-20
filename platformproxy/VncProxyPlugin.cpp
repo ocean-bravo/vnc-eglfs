@@ -1,7 +1,7 @@
 #include <qpa/qplatformintegrationplugin.h>
 #include <qpa/qplatformintegrationfactory_p.h>
 
-#include "VncNamespace.h"
+#include "../src/VncNamespace.h"
 
 namespace
 {
