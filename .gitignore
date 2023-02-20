@@ -3,6 +3,6 @@ obj
 lib
 plugins
 Makefile
-.qmake*
+.qmake.stash
 *.pro.user
 *.autosave
