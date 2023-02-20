@@ -7,7 +7,7 @@ TARGET = $$qtLibraryTarget(vncproxy)
 CONFIG += plugin
 CONFIG += warn_on
 
-CONFIG += hide_symbols
+#CONFIG += hide_symbols
 CONFIG += no_private_qt_headers_warning
 
 DESTDIR = plugins/platforms

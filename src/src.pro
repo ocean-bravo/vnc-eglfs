@@ -40,6 +40,9 @@ pedantic {
 
 DESTDIR = $${BUILD_ROOT}/lib
 
+message (project root: $${PROJECT_ROOT})
+message (build root: $${BUILD_ROOT})
+
 HEADERS += \
     RfbSocket.h \
     RfbPixelStreamer.h \
