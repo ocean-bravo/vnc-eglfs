@@ -1,6 +1,8 @@
-moc
-obj
-lib
+.moc
+.obj
+.rcc
+.ui
+out
 plugins
 Makefile
 .qmake.stash
