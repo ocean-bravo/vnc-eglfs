@@ -76,8 +76,3 @@ target.path = $${INSTALL_ROOT}/lib
 header_files.path = $${INSTALL_ROOT}/include
 
 INSTALLS += target header_files
-
-
-message(some var 2_pro: $$SOME_VAR)
-SOME_VAR += 5
-message(some var 2_pro: $$SOME_VAR)
