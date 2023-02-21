@@ -23,14 +23,15 @@ PROJECT_ROOT = $$clean_path( $$PWD/../src )
 INCLUDEPATH *= $${PROJECT_ROOT}
 DEPENDPATH *= $${PROJECT_ROOT}
 
-LIBS *= -L$${PROJECT_ROOT}/lib -lvncgl
+INSTALL_ROOT=/usr/local/vnceglfs
+LIBS *= -L$${INSTALL_ROOT}/lib -lvncgl
 
 SOURCES += \
     VncProxyPlugin.cpp
 
 OTHER_FILES += metadata.json
 
-INSTALL_ROOT=/usr/local/vnceglfs
+
 # INSTALL_ROOT=$$[QT_INSTALL_PREFIX]
 
 target.path = $${INSTALL_ROOT}/plugins/platforms

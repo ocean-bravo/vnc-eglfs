@@ -96,6 +96,9 @@ bool VncManager::startServer( QWindow* window, int port )
         port = nextPort();
 
     m_servers += new VncServer( port, window );
+
+    qDebug() << "VNC server started on port: " << port;
+
     return true;
 }
 
