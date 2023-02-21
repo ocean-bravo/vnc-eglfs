@@ -1,20 +1,19 @@
+QT += gui gui-private network
+
 TEMPLATE = lib
-TARGET   = qvnceglfs
+
+TARGET = $$qtLibraryTarget(vncgl)
 
 DEFINES += VNC_MAKEDLL
 
-QT += gui gui-private network
+CONFIG += shared debug
 
-CONFIG += hide_symbols
-CONFIG += silent
+#CONFIG += hide_symbols
+#CONFIG += silent
 CONFIG += no_private_qt_headers_warning
 
-CONFIG += strict_c++
-CONFIG += c++11
 CONFIG += warn_on
 CONFIG += pedantic
-
-CONFIG += debug
 
 pedantic {
     linux-g++ | linux-g++-64 {
@@ -37,11 +36,9 @@ pedantic {
     }
 }
 
-MOC_DIR=moc
-OBJECTS_DIR=obj
+$$type(PROJECT_ROOT)
+include ($${PROJECT_ROOT}/qmake_template.pri)
 
-TARGET = $$qtLibraryTarget(vncgl)
-DESTDIR = lib
 
 HEADERS += \
     RfbSocket.h \
@@ -51,6 +48,9 @@ HEADERS += \
     VncServer.h \
     VncClient.h \
     VncNamespace.h \
+    client_thread.h \
+    tcp_server.h \
+    vnc_manager.h
 
 SOURCES += \
     RfbSocket.cpp \
@@ -60,13 +60,19 @@ SOURCES += \
     VncServer.cpp \
     VncClient.cpp \
     VncNamespace.cpp \
+    client_thread.cpp \
+    tcp_server.cpp \
+    vnc_manager.cpp
+
+OTHER_FILES +=
+    vncgl.pri \
 
 INSTALL_ROOT=/usr/local/vnceglfs
 # INSTALL_ROOT=$$[QT_INSTALL_PREFIX]
 
 target.path = $${INSTALL_ROOT}/lib
 
-header_files.files = VncNamespace.h
-header_files.path = $${INSTALL_ROOT}/include
+#header_files.files = VncNamespace.h
+#header_files.path = $${INSTALL_ROOT}/include
 
-INSTALLS += target header_files
+INSTALLS += target # header_files

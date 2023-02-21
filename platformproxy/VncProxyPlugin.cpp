@@ -1,37 +1,31 @@
-#include <qpa/qplatformintegrationplugin.h>
-#include <qpa/qplatformintegrationfactory_p.h>
+#include "VncProxyPlugin.h"
 
-#include <VncNamespace.h>
+#include "../src/VncNamespace.h"
 
-namespace
+#include <qdebug.h>
+#include <qloggingcategory.h>
+
+
+Q_LOGGING_CATEGORY( logConnection, "vnceglfs.connection" )
+
+QPlatformIntegration* Plugin::create(const QString& system, const QStringList& args, int& argc, char** argv)
 {
-    class Plugin final : public QPlatformIntegrationPlugin
+    qCDebug(logConnection) << "somte text;";
+    qDebug()<< "texgt sfasfas";
+
+    QPlatformIntegration* integration = nullptr;
+
+    if ( system.startsWith( "vnc", Qt::CaseInsensitive ) )
     {
-        Q_OBJECT
-        Q_PLUGIN_METADATA( IID QPlatformIntegrationFactoryInterface_iid FILE "metadata.json" )
+        const auto path = QString::fromLocal8Bit(
+            qgetenv( "QT_QPA_PLATFORM_PLUGIN_PATH" ) );
 
-      public:
+        integration = QPlatformIntegrationFactory::create(
+            system.mid( 3 ), args, argc, argv, path );
+    }
 
-        QPlatformIntegration* create( const QString& system,
-            const QStringList& args, int& argc, char** argv ) override
-        {
-            QPlatformIntegration* integration = nullptr;
+    if ( integration )
+        Vnc::setAutoStartEnabled( true );
 
-            if ( system.startsWith( "vnc", Qt::CaseInsensitive ) )
-            {
-                const auto path = QString::fromLocal8Bit(
-                    qgetenv( "QT_QPA_PLATFORM_PLUGIN_PATH" ) );
-
-                integration = QPlatformIntegrationFactory::create(
-                    system.mid( 3 ), args, argc, argv, path );
-            }
-
-            if ( integration )
-                Vnc::setAutoStartEnabled( true );
-
-            return integration;
-        }
-    };
+    return integration;
 }
-
-#include "VncProxyPlugin.moc"

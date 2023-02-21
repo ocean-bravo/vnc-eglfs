@@ -5,6 +5,8 @@
 
 #include "VncServer.h"
 #include "VncClient.h"
+#include "tcp_server.h"
+#include "client_thread.h"
 
 #include <qtcpserver.h>
 #include <qopenglcontext.h>
@@ -53,66 +55,9 @@ namespace
     }
 #endif
 
-    class TcpServer final : public QTcpServer
-    {
-        Q_OBJECT
 
-      public:
-        TcpServer( QObject* parent )
-            : QTcpServer( parent )
-        {
-        }
 
-      Q_SIGNALS:
-        void connectionRequested( qintptr );
 
-      protected:
-        void incomingConnection( qintptr socketDescriptor ) override
-        {
-            /*
-                We do not want to use QTcpServer::nextPendingConnection to avoid
-                QTcpSocket being created in the wrong thread
-             */
-            Q_EMIT connectionRequested( socketDescriptor );
-        }
-    };
-
-    class ClientThread : public QThread
-    {
-      public:
-        ClientThread( qintptr socketDescriptor, VncServer* server )
-            : QThread( server )
-            , m_socketDescriptor( socketDescriptor )
-        {
-        }
-
-        ~ClientThread()
-        {
-        }
-
-        void markDirty()
-        {
-            if ( m_client )
-                m_client->markDirty();
-        }
-
-        VncClient* client() const { return m_client; }
-
-      protected:
-        void run() override
-        {
-            VncClient client( m_socketDescriptor, qobject_cast< VncServer* >( parent() ) );
-            connect( &client, &VncClient::disconnected, this, &QThread::quit );
-
-            m_client = &client;
-            QThread::run();
-            m_client = nullptr;
-        }
-
-      private:
-        VncClient* m_client = nullptr;
-        const qintptr m_socketDescriptor;
-    };
 }
 
 VncServer::VncServer( int port, QWindow* window )
@@ -337,5 +282,5 @@ VncCursor VncServer::cursor() const
     return m_cursor;
 }
 
-#include "VncServer.moc"
-#include "moc_VncServer.cpp"
+//#include "VncServer.moc"
+//#include "moc_VncServer.cpp"

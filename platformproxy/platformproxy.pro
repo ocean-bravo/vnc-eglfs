@@ -1,32 +1,21 @@
-TEMPLATE = lib
-
-CONFIG += plugin
-CONFIG += silent
-CONFIG += warn_on
-
-CONFIG += hide_symbols
-CONFIG += no_private_qt_headers_warning
-
-CONFIG += strict_c++
-CONFIG += c++11
-
 QT += gui gui-private
 
-MOC_DIR=moc
-OBJECTS_DIR=obj
+TEMPLATE = lib
 
 TARGET = $$qtLibraryTarget(vncproxy)
-DESTDIR = plugins/platforms
 
-PROJECT_ROOT = $$clean_path( $$PWD/../src )
+CONFIG += plugin
+CONFIG += warn_on
 
-INCLUDEPATH *= $${PROJECT_ROOT}
-DEPENDPATH *= $${PROJECT_ROOT}
+#CONFIG += hide_symbols
+CONFIG += no_private_qt_headers_warning
 
-LIBS *= -L$${PROJECT_ROOT}/lib -lvncgl
+$$type(PROJECT_ROOT)
+include ($${PROJECT_ROOT}/qmake_template.pri)
+include($${PROJECT_ROOT}/src/vncgl.pri)
 
-SOURCES += \
-    VncProxyPlugin.cpp
+HEADERS += \
+    VncProxyPlugin.h
 
 OTHER_FILES += metadata.json
 
@@ -35,3 +24,11 @@ INSTALL_ROOT=/usr/local/vnceglfs
 
 target.path = $${INSTALL_ROOT}/plugins/platforms
 INSTALLS += target
+
+SOURCES += \
+    VncProxyPlugin.cpp
+
+
+#message(some var 1_pro: $$SOME_VAR)
+#SOME_VAR += 4
+#message(some var 1_pro: $$SOME_VAR)

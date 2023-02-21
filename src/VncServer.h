@@ -5,11 +5,11 @@
 
 #pragma once
 
-#include <qobject.h>
-#include <qimage.h>
-#include <qvector.h>
-#include <qmutex.h>
-#include <qpointer.h>
+#include <QObject>
+#include <QImage>
+#include <QVector>
+#include <QMutex>
+#include <QPointer>
 
 class QWindow;
 class QTcpServer;
