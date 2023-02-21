@@ -11,6 +11,7 @@ Q_LOGGING_CATEGORY( logConnection, "vnceglfs.connection" )
 QPlatformIntegration* Plugin::create(const QString& system, const QStringList& args, int& argc, char** argv)
 {
     qCDebug(logConnection) << "somte text;";
+    qDebug()<< "texgt sfasfas";
 
     QPlatformIntegration* integration = nullptr;
 

@@ -73,6 +73,6 @@ INSTALL_ROOT=/usr/local/vnceglfs
 target.path = $${INSTALL_ROOT}/lib
 
 #header_files.files = VncNamespace.h
-header_files.path = $${INSTALL_ROOT}/include
+#header_files.path = $${INSTALL_ROOT}/include
 
-INSTALLS += target header_files
+INSTALLS += target # header_files
