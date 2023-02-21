@@ -6,7 +6,7 @@ TARGET = $$qtLibraryTarget(vncgl)
 
 DEFINES += VNC_MAKEDLL
 
-CONFIG += shared
+CONFIG += shared debug
 
 #CONFIG += hide_symbols
 #CONFIG += silent
@@ -14,8 +14,6 @@ CONFIG += no_private_qt_headers_warning
 
 CONFIG += warn_on
 CONFIG += pedantic
-
-CONFIG += debug
 
 pedantic {
     linux-g++ | linux-g++-64 {
@@ -38,10 +36,9 @@ pedantic {
     }
 }
 
-DESTDIR = $${BUILD_ROOT}/lib
+$$type(PROJECT_ROOT)
+include ($${PROJECT_ROOT}/qmake_template.pri)
 
-message (project root: $${PROJECT_ROOT})
-message (build root: $${BUILD_ROOT})
 
 HEADERS += \
     RfbSocket.h \
@@ -79,3 +76,8 @@ target.path = $${INSTALL_ROOT}/lib
 header_files.path = $${INSTALL_ROOT}/include
 
 INSTALLS += target header_files
+
+
+message(some var 2_pro: $$SOME_VAR)
+SOME_VAR += 5
+message(some var 2_pro: $$SOME_VAR)

@@ -2,7 +2,7 @@ isEmpty(QMAKE_TOOLS_PRI) {
 QMAKE_TOOLS_PRI = used
 
 # Флаг для вывода дополнительной информации
-ENABLE_QMAKE_DEBUG = false
+ENABLE_QMAKE_DEBUG = true
 
 # Вспомогательные функции
 # Присваивает путь по умолчанию заданной переменной, если она не определена.
